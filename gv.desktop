@@ -5,5 +5,6 @@ Comment[pl]=Przeglądarka postscriptu
 Icon=gv.png
 Exec=gv
 Terminal=0
+Categories=Graphics;Viewer
 Type=Application
 # vi: encoding=utf-8
