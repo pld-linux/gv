@@ -5,7 +5,7 @@ Summary(pl):	Zaawansowana nak³adka na ghostscript'a (interpreter PostScriptu(TM)
 Summary(tr):	Ghostscript için grafik arayüz
 Name:		gv
 Version:	3.5.8
-Release:	19
+Release:	20
 License:	GPL
 Group:		X11/Applications/Graphics
 Source0:	ftp://ftpthep.physik.uni-mainz.de/pub/gv/unix/%{name}-%{version}.tar.gz
@@ -73,7 +73,7 @@ install -d $RPM_BUILD_ROOT{%{_applnkdir}/Graphics/Viewers,%{_datadir}/pixmaps}
 %{__make} install install.man DESTDIR=$RPM_BUILD_ROOT
 ln -sf gv $RPM_BUILD_ROOT%{_bindir}/ghostview
 
-mv -f $RPM_BUILD_ROOT/%{_libdir}/X11/gv/gv_class.ad $RPM_BUILD_ROOT%{_libdir}/X11/app-defaults/GV
+mv -f $RPM_BUILD_ROOT/usr/X11R6/lib/X11/app-defaults $RPM_BUILD_ROOT%{_libdir}
 
 install %{SOURCE1} $RPM_BUILD_ROOT%{_applnkdir}/Graphics/Viewers
 install %{SOURCE2} $RPM_BUILD_ROOT%{_datadir}/pixmaps
@@ -89,5 +89,5 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/*
 %{_applnkdir}/Graphics/Viewers/gv.desktop
 %{_pixmapsdir}/*
-%{_libdir}/X11/app-defaults/GV
+%{_libdir}/*
 %{_mandir}/man1/gv.1x*
