@@ -78,5 +78,5 @@ rm -rf $RPM_BUILD_ROOT
 %doc doc/*.html {README,CHANGES,doc/*doc,doc/*txt}.gz
 /etc/X11/applnk/Applications/gv.desktop
 %attr(755,root,root) %{_bindir}/*
-%config %{_libdir}/X11/app-defaults/GV
+%{_libdir}/X11/app-defaults/GV
 %{_mandir}/man1/gv.1x*
