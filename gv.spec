@@ -15,9 +15,9 @@ Source2:	%{name}.png
 URL:		http://wwwthep.physik.uni-mainz.de/~plass/gv/
 BuildRequires:	XFree86-devel
 BuildRequires:	Xaw3d-devel >= 1.5E
-BuildRequires:  autoconf
-BuildRequires:  automake
-BuildRequires:  texinfo
+BuildRequires:	autoconf
+BuildRequires:	automake
+BuildRequires:	texinfo
 Requires:	ghostscript
 Obsoletes:	ghostview
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
