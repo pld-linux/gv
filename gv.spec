@@ -14,7 +14,7 @@ Source1:     gv.wmconfig
 Patch0:      gv-3.5.8-config.patch
 URL:         http://wwwthep.physik.uni-mainz.de/~plass/gv/
 Obsoletes:   ghostview
-Buildroot:   /tmp/%{name}-%{version}-root
+BuildRoot:	/tmp/%{name}-%{version}-root
 
 %description
 gv allows to view and navigate through PostScript and PDF documents on an X
