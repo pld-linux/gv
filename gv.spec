@@ -18,6 +18,7 @@ Patch2:		gv-quote.patch
 URL:		http://wwwthep.physik.uni-mainz.de/~plass/gv/
 BuildRequires:	Xaw3d-devel >= 1.5
 BuildRequires:	XFree86-devel
+BuildRequires:	xpm-devel
 Requires:	ghostscript
 Obsoletes:	ghostview
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
