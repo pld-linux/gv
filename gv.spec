@@ -5,7 +5,7 @@ Summary(pl):	Zaawansowana nak³adka na ghostscript'a (interpreter PostScriptu(TM)
 Summary(tr):	Ghostscript için grafik arayüz
 Name:		gv
 Version:	3.5.8
-Release:	10
+Release:	11
 Copyright:	GPL
 Group:		X11/Applications/Graphics
 Group(pl):	X11/Aplikacje/Grafika
@@ -60,13 +60,13 @@ make CDEBUGFLAGS="$RPM_OPT_FLAGS"
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT/usr/X11R6/share/applnk/Applications
+install -d $RPM_BUILD_ROOT%{_applnkdir}/Office/Misc
 
 make install install.man DESTDIR=$RPM_BUILD_ROOT
 ln -sf gv $RPM_BUILD_ROOT%{_bindir}/ghostview
 
 mv -f $RPM_BUILD_ROOT/%{_libdir}/X11/gv/gv_class.ad $RPM_BUILD_ROOT%{_libdir}/X11/app-defaults/GV
-install %{SOURCE1} $RPM_BUILD_ROOT/usr/X11R6/share/applnk/Applications
+install %{SOURCE1} $RPM_BUILD_ROOT%{_applnkdir}/Office/Misc
 
 gunzip doc/*gz
 gzip -9nf README CHANGES doc/*doc doc/*txt \
@@ -78,7 +78,7 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc doc/*.html {README,CHANGES,doc/*doc,doc/*txt}.gz
-/usr/X11R6/share/applnk/Applications/gv.desktop
+%{_applnkdir}/Office/Misc/gv.desktop
 %attr(755,root,root) %{_bindir}/*
 %{_libdir}/X11/app-defaults/GV
 %{_mandir}/man1/gv.1x*
