@@ -5,7 +5,7 @@ Summary(pl):	Zaawansowana nak³adka na ghostscript'a (interpreter PostScriptu(TM)
 Summary(tr):	Ghostscript için grafik arayüz
 Name:		gv
 Version:	3.5.8
-Release:	18
+Release:	19
 License:	GPL
 Group:		X11/Applications/Graphics
 Source0:	ftp://ftpthep.physik.uni-mainz.de/pub/gv/unix/%{name}-%{version}.tar.gz
@@ -16,6 +16,7 @@ Patch1:		%{name}-alias.patch
 Patch2:		%{name}-quote.patch
 Patch3:		%{name}-fix_NoMan.patch
 Patch4:		%{name}-wheel.patch
+Patch5:		%{name}-buffer.patch
 URL:		http://wwwthep.physik.uni-mainz.de/~plass/gv/
 BuildRequires:	Xaw3d-devel >= 1.5
 BuildRequires:	XFree86-devel
@@ -60,6 +61,7 @@ Ghostview adýyla bilinen programdan yola çýkýlarak hazýrlanmýþtýr.
 %patch2 -p1
 %patch3 -p1
 %patch4 -p1
+%patch5 -p1
 
 %build
 xmkmf -a
