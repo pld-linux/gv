@@ -61,7 +61,7 @@ Ghostview adýyla bilinen programdan yola çýkýlarak hazýrlanmýþtýr.
 
 %build
 xmkmf -a
-%{__make} CDEBUGFLAGS="%{?debug:-O0 -g}%{!?debug:$RPM_OPT_FLAGS}" \
+%{__make} CDEBUGFLAGS="%{rpmcflags}" \
 	LOCAL_LDFLAGS=%{!?debug:-s}
 
 %install
