@@ -1,0 +1,13 @@
+--- gv/doc/gv.texi.orig	2004-11-19 21:04:47.000000000 +0100
++++ gv/doc/gv.texi	2004-11-23 22:42:11.063963616 +0100
+@@ -22,8 +22,9 @@
+ @end quotation
+ @end copying
+ 
++@dircategory Graphics Utilities:
+ @direntry
+-* gv: (gv).     The GNU PostScript and PDF viewer.
++* gv: (gv).				The GNU PostScript and PDF viewer
+ @end direntry
+ 
+ @titlepage
