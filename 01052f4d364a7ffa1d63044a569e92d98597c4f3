@@ -1,0 +1,1 @@
+- perl -pi -e "s/^\%%\{_datadir\}\/pixmaps/\%%\{_pixmapsdir\}/"
