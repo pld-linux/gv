@@ -51,9 +51,8 @@
 +      char *dscpos;
        char cmd[512];
        char s[512];
--      filename_dsc=file_getTmpFilename(NULL,filename_raw);
+       filename_dsc=file_getTmpFilename(NULL,filename_raw);
 -      sprintf(cmd,cmd_scan_pdf,filename,filename_dsc);
-+      filename_dsc=file_getTmpFilename(NULL,filename_raw);      
 +      quoted_filename = quote_filename(filename);
 +      quoted_filename_dsc = quote_filename(filename_dsc);
 +      if ((pdfpos = strstr(cmd_scan_pdf,"%pdf")) &&
@@ -164,17 +163,6 @@
      s = (char*)client_data;
      if (*s=='-' || *s=='+') {  
        k = 1;
---- gv-3.5.8.orig/src/descrip.mms
-+++ gv-3.5.8/src/descrip.mms
-@@ -262,7 +262,7 @@
-  @ WRITE_ file ""
-  @ WRITE_ file "GV.gsInterpreter:	gs"
-  @ WRITE_ file "GV.gsCmdScanPDF:	gs ""-dNODISPLAY"" ""-dQUIET"" ""-sPDFname""=%s ""-sDSCname""=%s pdf2dsc.ps -c quit"
-- @ WRITE_ file "GV.gsCmdConvPDF:	gs ""-dNODISPLAY"" ""-dQUIET"" $(PS_LEVEL) ""-dNOPAUSE"" ""-sPSFile""=%s %s -c quit"
-+ @ WRITE_ file "GV.gsCmdConvPDF:       gs ""-dNODISPLAY"" ""-dQUIET"" $(PS_LEVEL) ""-dNOPAUSE"" ""-sPSFile""=%s %s -c quit"
-  @ WRITE_ file "GV.gsX11Device:	""-sDEVICE=x11"""
-  @ WRITE_ file "GV.gsX11AlphaDevice:""-dNOPLATFONTS"" ""-sDEVICE=x11alpha"""
-  @ WRITE_ file "GV.gsSafer:	True"
 --- gv-3.5.8.orig/src/misc.h
 +++ gv-3.5.8/src/misc.h
 @@ -115,6 +115,12 @@
@@ -209,7 +197,7 @@
 +   strcpy(to,from);
 +#  ifndef VMS
 +      len = strlen(to);
-+      if (to[len-1] != '/') { to[len] = '/'; to[len+1] = '\0'; }
++      if ((len > 0) && (to[len-1] != '/')) { to[len] = '/'; to[len+1] = '\0'; }
 +#  endif
 +   ENDMESSAGE(file_assureDirectory)
 +}
