@@ -58,13 +58,13 @@ make CDEBUGFLAGS="$RPM_OPT_FLAGS"
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT/etc/X11/applnk/Applications
+install -d $RPM_BUILD_ROOT/usr/X11R6/share/applnk/Applications
 
 make install install.man DESTDIR=$RPM_BUILD_ROOT
 ln -sf gv $RPM_BUILD_ROOT%{_bindir}/ghostview
 
 mv -f $RPM_BUILD_ROOT/%{_libdir}/X11/gv/gv_class.ad $RPM_BUILD_ROOT%{_libdir}/X11/app-defaults/GV
-install %{SOURCE1} $RPM_BUILD_ROOT/etc/X11/applnk/Applications
+install %{SOURCE1} $RPM_BUILD_ROOT/usr/X11R6/share/applnk/Applications
 
 gunzip doc/*gz
 gzip -9nf README CHANGES doc/*doc doc/*txt \
@@ -76,7 +76,7 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc doc/*.html {README,CHANGES,doc/*doc,doc/*txt}.gz
-/etc/X11/applnk/Applications/gv.desktop
+/usr/X11R6/share/applnk/Applications/gv.desktop
 %attr(755,root,root) %{_bindir}/*
 %{_libdir}/X11/app-defaults/GV
 %{_mandir}/man1/gv.1x*
