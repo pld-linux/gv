@@ -5,16 +5,18 @@ Summary(pl):	Zaawansowana nak³adka na ghostscript'a (interpreter PostScriptu(TM)
 Summary(tr):	Ghostscript için grafik arayüz
 Name:		gv
 Version:	3.5.8
-Release:	11
-Copyright:	GPL
+Release:	12
+License:	GPL
 Group:		X11/Applications/Graphics
+Group(de):	X11/Applikationen/Grafik
 Group(pl):	X11/Aplikacje/Grafika
-URL:		http://wwwthep.physik.uni-mainz.de/~plass/gv/
 Source0:	ftp://thep.physik.uni-mainz.de/pub/gv/unix/%{name}-%{version}.tar.gz
-Source1:	gv.desktop
-Patch0:		gv-config.patch
-Patch1:		gv-alias.patch
-BuildRequires:	Xaw3d-devel
+Source1:	%{name}.desktop
+Patch0:		%{name}-config.patch
+Patch1:		%{name}-alias.patch
+Patch2:		gv-quote.patch
+URL:		http://wwwthep.physik.uni-mainz.de/~plass/gv/
+BuildRequires:	Xaw3d-devel >= 1.5
 BuildRequires:	XFree86-devel
 Requires:	ghostscript
 Obsoletes:	ghostview
@@ -24,39 +26,42 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 %define		_mandir		%{_prefix}/man
 
 %description
-Gv provides a user interface for the ghostscript PostScript(TM) interpreter. 
-Derived from the ghostview program, gv can display PostScript and PDF
-documents using the X Window System.
+Gv provides a user interface for the ghostscript PostScript(TM)
+interpreter. Derived from the ghostview program, gv can display
+PostScript and PDF documents using the X Window System.
 
 %description -l de
 gv ermöglicht das Einsehen und Navigieren von PostScript- und PDF-
-Dokumenten unter X, indem es eine Benutzeroberfläche für den Ghostscript-
-Interpreter bereitstellt. gv basiert auf dem älteren Programm ghostview.
+Dokumenten unter X, indem es eine Benutzeroberfläche für den
+Ghostscript- Interpreter bereitstellt. gv basiert auf dem älteren
+Programm ghostview.
 
 %description -l fr
-gv permet de visualiser et de naviguer dans les documents PostScript et PDF
-sur un écran X en offrant une interface pour l'interpréteur ghostscript. gv
-est basé sur un ancien programme appelé ghostview.
+gv permet de visualiser et de naviguer dans les documents PostScript
+et PDF sur un écran X en offrant une interface pour l'interpréteur
+ghostscript. gv est basé sur un ancien programme appelé ghostview.
 
 %description -l pl
-gv umo¿liwia ogl±danie i manipulacjê plikami postscriptowymi i dokumentami w
-formacie PDF pod X Window. Udostêpnia graficzny interfejs u¿ytkownika do
-programu ghostscript bêd±cego interpreterem jêzyka postscript.
+gv umo¿liwia ogl±danie i manipulacjê plikami postscriptowymi i
+dokumentami w formacie PDF pod X Window. Udostêpnia graficzny
+interfejs u¿ytkownika do programu ghostscript bêd±cego interpreterem
+jêzyka postscript.
 
 %description -l tr
-gv, PostScript ve PDF dosyalarýný bir X ekraný üzerinde gösterebilen ve
-üzerlerinde dolaþmayý saðlayan bir ghostscript arayüzüdür. Ghostview adýyla
-bilinen programdan yola çýkýlarak hazýrlanmýþtýr.
+gv, PostScript ve PDF dosyalarýný bir X ekraný üzerinde gösterebilen
+ve üzerlerinde dolaþmayý saðlayan bir ghostscript arayüzüdür.
+Ghostview adýyla bilinen programdan yola çýkýlarak hazýrlanmýþtýr.
 
 %prep
 %setup -q
 %patch0 -p1
 %patch1 -p1
+%patch2 -p1
 
 %build
 xmkmf
 %{__make} Makefiles
-%{__make} CDEBUGFLAGS="$RPM_OPT_FLAGS"
+%{__make} CDEBUGFLAGS="%{?debug:$RPM_OPT_FLAGS}%{!?debug:-O -g}"
 
 %install
 rm -rf $RPM_BUILD_ROOT
