@@ -8,7 +8,7 @@ Version:	3.5.8
 Release:	17
 License:	GPL
 Group:		X11/Applications/Graphics
-Source0:	ftp://thep.physik.uni-mainz.de/pub/gv/unix/%{name}-%{version}.tar.gz
+Source0:	ftp://ftpthep.physik.uni-mainz.de/pub/gv/unix/%{name}-%{version}.tar.gz
 Source1:	%{name}.desktop
 Source2:	%{name}.png
 Patch0:		%{name}-config.patch
