@@ -5,7 +5,7 @@ Summary(pl): Zaawansowana nak³adka na ghostscript'a
 Summary(tr): Ghostscript için grafik arayüz
 Name:        gv
 Version:     3.5.8
-Release:     5
+Release:     6
 Copyright:   GPL
 Group:       X11/Applications/Graphics
 Requires:    ghostscript
@@ -60,6 +60,9 @@ gunzip doc/*gz
 install %{SOURCE1} $RPM_BUILD_ROOT/etc/X11/wmconfig/gv
 ln -sf gv $RPM_BUILD_ROOT/usr/X11R6/bin/ghostview
 
+%clean
+rm -rf $RPM_BUILD_ROOT
+
 %files
 %defattr(644, root, root, 755)
 %doc README CHANGES doc/*.html doc/*doc doc/*txt
@@ -70,6 +73,10 @@ ln -sf gv $RPM_BUILD_ROOT/usr/X11R6/bin/ghostview
 /etc/X11/wmconfig/gv
 
 %changelog
+* Sun Nov  1 1998 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
+  [3.5.8-6]
+- added %clean section.
+
 * Wed Aug 26 1998 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
   [3.5.8-5]
 - added -q %setup parameter,
