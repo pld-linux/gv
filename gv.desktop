@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=Ghostview
 Comment=Postscript viewer
-Icon=ghostview.bmp
+Icon=gv.png
 Exec=gv
 Terminal=0
 Type=Application
