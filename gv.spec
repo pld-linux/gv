@@ -5,7 +5,7 @@ Summary(pl):	Zaawansowana nak³adka na ghostscript'a (interpreter PostScriptu(TM)
 Summary(tr):	Ghostscript için grafik arayüz
 Name:		gv
 Version:	3.5.8
-Release:	14
+Release:	15
 License:	GPL
 Group:		X11/Applications/Graphics
 Group(de):	X11/Applikationen/Grafik
