@@ -64,9 +64,9 @@ ln -sf gv $RPM_BUILD_ROOT/usr/X11R6/bin/ghostview
 rm -rf $RPM_BUILD_ROOT
 
 %files
-%defattr(644, root, root, 755)
+%defattr(644,root,root,755)
 %doc README CHANGES doc/*.html doc/*doc doc/*txt
-%attr(755, root, root) /usr/X11R6/bin/*
+%attr(755,root,root) /usr/X11R6/bin/*
 /usr/X11R6/lib/X11/gv
 %config /usr/X11R6/lib/X11/app-defaults/GV
 /usr/X11R6/man/man1/gv.1x
