@@ -8,10 +8,10 @@
 -      GV_DOCDIR    = /usr/local/doc/gv/
 -      GV_LIBDIR    = /usr/local/lib/gv/
 -      GV_MANDIR    = /usr/local/man/man1/
-+      GV_BINDIR    = /usr/X11R6/bin/
++      GV_BINDIR    = /usr/bin/
 +      GV_DOCDIR    = /usr/doc/gv/
-+      GV_LIBDIR    = /usr/X11R6/lib/X11/gv/
-+      GV_MANDIR    = /usr/X11R6/man/man1/
++      GV_LIBDIR    = /usr/lib/gv/
++      GV_MANDIR    = /usr/share/man/man1/
  
  XCOMM --------------------------------------------------------------------
  XCOMM --- The name of the Xaw3d library.
