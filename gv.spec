@@ -8,12 +8,13 @@ Version:	3.5.8
 Release:	9
 Copyright:	GPL
 Group:		X11/Applications/Graphics
-Requires:	ghostscript
+Group(pl):	X11/Aplikacje/Grafika
+URL:		http://wwwthep.physik.uni-mainz.de/~plass/gv/
 Source0:	ftp://thep.physik.uni-mainz.de/pub/gv/unix/%{name}-%{version}.tar.gz
 Source1:	gv.desktop
 Patch0:		gv-config.patch
 Patch1:		gv-alias.patch
-URL:		http://wwwthep.physik.uni-mainz.de/~plass/gv/
+Requires:	ghostscript
 Obsoletes:	ghostview
 BuildRoot:	/tmp/%{name}-%{version}-root
 
@@ -38,7 +39,7 @@ est basé sur un ancien programme appelé ghostview.
 %description -l pl
 gv umo¿liwia ogl±danie i manipulacjê plikami postscriptowymi i dokumentami w
 formacie PDF pod X Window. Udostêpnia graficzny interfejs u¿ytkownika do
-programu ghostscript bêd±cego interpreterem jezyka postscript.
+programu ghostscript bêd±cego interpreterem jêzyka postscript.
 
 %description -l tr
 gv, PostScript ve PDF dosyalarýný bir X ekraný üzerinde gösterebilen ve
