@@ -17,6 +17,7 @@ Source2:	%{name}.png
 Patch0:		%{name}-config.patch
 Patch1:		%{name}-alias.patch
 Patch2:		%{name}-quote.patch
+Patch3:		%{name}-fix_NoMan.patch
 URL:		http://wwwthep.physik.uni-mainz.de/~plass/gv/
 BuildRequires:	Xaw3d-devel >= 1.5
 BuildRequires:	XFree86-devel
@@ -59,6 +60,7 @@ Ghostview adýyla bilinen programdan yola çýkýlarak hazýrlanmýþtýr.
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
+%patch3 -p1
 
 %build
 xmkmf -a
