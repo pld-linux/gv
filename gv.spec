@@ -1,7 +1,7 @@
 Summary:	An enhanced front-end for the ghostscript PostScript(TM) interpreter
 Summary(de):	Verbessertes Frontend für Ghostscript
 Summary(fr):	Frontal amélioré pour ghostscript
-Summary(pl):	Zaawansowana nak³adka na ghostscript'a (interpreter PostScriptu(TM))
+Summary(pl):	Zaawansowana nak³adka na ghostscripta (interpreter PostScriptu(TM))
 Summary(tr):	Ghostscript için grafik arayüz
 Name:		gv
 Version:	3.5.8
@@ -24,9 +24,8 @@ Requires:	ghostscript
 Obsoletes:	ghostview
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
-
 %description
-Gv provides a user interface for the ghostscript PostScript(TM)
+gv provides a user interface for the ghostscript PostScript(TM)
 interpreter. Derived from the ghostview program, gv can display
 PostScript and PDF documents using the X Window System.
 
