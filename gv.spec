@@ -1,5 +1,5 @@
 Summary:	An enhanced front-end for the ghostscript PostScript(TM) interpreter
-Summary(de):	Verbessertes Frontend für Ghostscript 
+Summary(de):	Verbessertes Frontend für Ghostscript
 Summary(fr):	Frontal amélioré pour ghostscript
 Summary(pl):	Zaawansowana nak³adka na ghostscript'a (interpreter PostScriptu(TM))
 Summary(tr):	Ghostscript için grafik arayüz
