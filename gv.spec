@@ -18,11 +18,13 @@ Patch3:		%{name}-fix_NoMan.patch
 Patch4:		%{name}-wheel.patch
 Patch5:		%{name}-buffer.patch
 URL:		http://wwwthep.physik.uni-mainz.de/~plass/gv/
-BuildRequires:	Xaw3d-devel >= 1.5
 BuildRequires:	XFree86-devel
+BuildRequires:	Xaw3d-devel >= 1.5
 Requires:	ghostscript
 Obsoletes:	ghostview
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
+
+%define		addir	/usr/X11R6/lib/X11/app-defaults
 
 %description
 gv provides a user interface for the ghostscript PostScript(TM)
@@ -72,8 +74,6 @@ install -d $RPM_BUILD_ROOT{%{_applnkdir}/Graphics/Viewers,%{_datadir}/pixmaps}
 %{__make} install install.man DESTDIR=$RPM_BUILD_ROOT
 ln -sf gv $RPM_BUILD_ROOT%{_bindir}/ghostview
 
-mv -f $RPM_BUILD_ROOT/usr/X11R6/lib/X11/app-defaults $RPM_BUILD_ROOT%{_libdir}
-
 install %{SOURCE1} $RPM_BUILD_ROOT%{_applnkdir}/Graphics/Viewers
 install %{SOURCE2} $RPM_BUILD_ROOT%{_datadir}/pixmaps
 
@@ -86,7 +86,8 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc doc/*.html README CHANGES doc/*doc doc/*txt
 %attr(755,root,root) %{_bindir}/*
+%{_libdir}/gv
+%{addir}/GV
 %{_applnkdir}/Graphics/Viewers/gv.desktop
 %{_pixmapsdir}/*
-%{_libdir}/*
 %{_mandir}/man1/gv.1x*
