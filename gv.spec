@@ -76,13 +76,13 @@ xmkmf -a
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT{%{_applnkdir}/Graphics/Viewers,%{_datadir}/pixmaps}
+install -d $RPM_BUILD_ROOT{%{_desktopdir},%{_pixmapsdir}}
 
 %{__make} install install.man DESTDIR=$RPM_BUILD_ROOT
 ln -sf gv $RPM_BUILD_ROOT%{_bindir}/ghostview
 
-install %{SOURCE1} $RPM_BUILD_ROOT%{_applnkdir}/Graphics/Viewers
-install %{SOURCE2} $RPM_BUILD_ROOT%{_datadir}/pixmaps
+install %{SOURCE1} $RPM_BUILD_ROOT%{_desktopdir}
+install %{SOURCE2} $RPM_BUILD_ROOT%{_pixmapsdir}
 
 gunzip doc/*gz
 
@@ -95,6 +95,6 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/*
 %{_libdir}/gv
 %{_appdefsdir}/GV
-%{_applnkdir}/Graphics/Viewers/gv.desktop
+%{_desktopdir}/gv.desktop
 %{_pixmapsdir}/*
 %{_mandir}/man1/gv.1x*
