@@ -87,7 +87,7 @@ rm -rf $RPM_BUILD_ROOT
 - removed COPYING from %doc (copyright statment is in Copyright field),
 - added %config macro for gv X resources,
 - added pl translation,
-- added %attr and %defattr macros in %files (allow build package from
+- added %attr and %defattr macros in %files (allows build package from
   non-root account).
 
 * Fri May 08 1998 Prospector System <bugs@redhat.com>
