@@ -4,28 +4,23 @@ Summary(fr):	Frontal amélioré pour ghostscript
 Summary(pl):	Zaawansowana nak³adka na ghostscripta (interpreter PostScriptu(TM))
 Summary(tr):	Ghostscript için grafik arayüz
 Name:		gv
-Version:	3.5.8
-Release:	23
+Version:	3.6.0
+Release:	1
 License:	GPL
 Group:		X11/Applications/Graphics
-Source0:	ftp://ftpthep.physik.uni-mainz.de/pub/gv/unix/%{name}-%{version}.tar.gz
-# Source0-md5:	8f2f0bd97395d6cea52926ddee736da8
+Source0:	ftp://ftp.gnu.org/gnu/gv/%{name}-%{version}.tar.gz
+# Source0-md5:	c1b26aae6890f3a6a787a55d8284c21b
 Source1:	%{name}.desktop
 Source2:	%{name}.png
-Patch0:		%{name}-config.patch
-Patch1:		%{name}-alias.patch
-Patch2:		%{name}-quote.patch
-Patch3:		%{name}-fix_NoMan.patch
-Patch4:		%{name}-wheel.patch
-Patch5:		%{name}-buffer.patch
 URL:		http://wwwthep.physik.uni-mainz.de/~plass/gv/
 BuildRequires:	XFree86-devel
 BuildRequires:	Xaw3d-devel >= 1.5E
+BuildRequires:  autoconf
+BuildRequires:  automake
+BuildRequires:  texinfo
 Requires:	ghostscript
 Obsoletes:	ghostview
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
-
-%define		_appdefsdir	/usr/X11R6/lib/X11/app-defaults
 
 %description
 gv provides a user interface for the ghostscript PostScript(TM)
@@ -55,46 +50,40 @@ ve üzerlerinde dolaþmayý saðlayan bir ghostscript arayüzüdür.
 Ghostview adýyla bilinen programdan yola çýkýlarak hazýrlanmýþtýr.
 
 %prep
-%setup -q
-%patch0 -p1
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
-%patch4 -p1
-%patch5 -p1
-
-sed -i \
-	-e 's|#include[ 	]*INC_X11(\([^)]*\))|#include <X11/\1>|' \
-	-e 's|#include[ 	]*INC_XMU(\([^)]*\))|#include <X11/Xmu/\1>|' \
-	-e 's|#include[ 	]*INC_XAW(\([^)]*\))|#include <X11/Xaw3d/\1>|' \
-	source/*.c source/*.h
+%setup -q -n %{name}
 
 %build
-xmkmf -a
-%{__make} CDEBUGFLAGS="%{rpmcflags}" \
-	LOCAL_LDFLAGS="%{rpmldflags}"
+%{__aclocal}
+%{__autoconf}
+%{__automake}
+%configure
+%{__make}
 
 %install
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT{%{_desktopdir},%{_pixmapsdir}}
 
-%{__make} install install.man DESTDIR=$RPM_BUILD_ROOT
+%{__make} install \
+	DESTDIR=$RPM_BUILD_ROOT
 ln -sf gv $RPM_BUILD_ROOT%{_bindir}/ghostview
 
 install %{SOURCE1} $RPM_BUILD_ROOT%{_desktopdir}
 install %{SOURCE2} $RPM_BUILD_ROOT%{_pixmapsdir}
 
-gunzip doc/*gz
-
 %clean
 rm -rf $RPM_BUILD_ROOT
 
+%post
+[ ! -x /usr/sbin/fix-info-dir ] || /usr/sbin/fix-info-dir -c %{_infodir} >/dev/null 2>&1
+
+%postun
+[ ! -x /usr/sbin/fix-info-dir ] || /usr/sbin/fix-info-dir -c %{_infodir} >/dev/null 2>&1
+
 %files
 %defattr(644,root,root,755)
-%doc doc/*.html README CHANGES doc/*doc doc/*txt
+%doc README NEWS
 %attr(755,root,root) %{_bindir}/*
-%{_prefix}/lib/gv
-%{_appdefsdir}/GV
+%{_libdir}/gv
 %{_desktopdir}/gv.desktop
 %{_pixmapsdir}/*
-%{_mandir}/man1/gv.1x*
+%{_infodir}/gv.*
