@@ -5,7 +5,7 @@ Summary(pl):	Zaawansowana nak³adka na ghostscript'a (interpreter PostScriptu(TM)
 Summary(tr):	Ghostscript için grafik arayüz
 Name:		gv
 Version:	3.5.8
-Release:	12
+Release:	13
 License:	GPL
 Group:		X11/Applications/Graphics
 Group(de):	X11/Applikationen/Grafik
@@ -14,7 +14,7 @@ Source0:	ftp://thep.physik.uni-mainz.de/pub/gv/unix/%{name}-%{version}.tar.gz
 Source1:	%{name}.desktop
 Patch0:		%{name}-config.patch
 Patch1:		%{name}-alias.patch
-Patch2:		gv-quote.patch
+Patch2:		%{name}-quote.patch
 URL:		http://wwwthep.physik.uni-mainz.de/~plass/gv/
 BuildRequires:	Xaw3d-devel >= 1.5
 BuildRequires:	XFree86-devel
@@ -60,9 +60,9 @@ Ghostview adýyla bilinen programdan yola çýkýlarak hazýrlanmýþtýr.
 %patch2 -p1
 
 %build
-xmkmf
-%{__make} Makefiles
-%{__make} CDEBUGFLAGS="%{?debug:$RPM_OPT_FLAGS}%{!?debug:-O -g}"
+xmkmf -a
+%{__make} CDEBUGFLAGS="%{?debug:$RPM_OPT_FLAGS}%{!?debug:-O -g}" \
+	LOCAL_LDFLAGS=%{!?debug:-s}
 
 %install
 rm -rf $RPM_BUILD_ROOT
@@ -75,8 +75,7 @@ mv -f $RPM_BUILD_ROOT/%{_libdir}/X11/gv/gv_class.ad $RPM_BUILD_ROOT%{_libdir}/X1
 install %{SOURCE1} $RPM_BUILD_ROOT%{_applnkdir}/Graphics/Viewers
 
 gunzip doc/*gz
-gzip -9nf README CHANGES doc/*doc doc/*txt \
-	$RPM_BUILD_ROOT%{_mandir}/man1/*
+gzip -9nf README CHANGES doc/*doc doc/*txt
 
 %clean
 rm -rf $RPM_BUILD_ROOT
