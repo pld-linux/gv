@@ -1,11 +1,11 @@
-Summary:	Enhanced frontend for ghostscript
+Summary:	An enhanced front-end for the ghostscript PostScript(TM) interpreter
 Summary(de):	Verbessertes Frontend für Ghostscript 
 Summary(fr):	Frontal amélioré pour ghostscript
-Summary(pl):	Zaawansowana nak³adka na ghostscript'a
+Summary(pl):	Zaawansowana nak³adka na ghostscript'a (interpreter PostScriptu(TM))
 Summary(tr):	Ghostscript için grafik arayüz
 Name:		gv
 Version:	3.5.8
-Release:	8
+Release:	9
 Copyright:	GPL
 Group:		X11/Applications/Graphics
 Requires:	ghostscript
@@ -17,13 +17,13 @@ URL:		http://wwwthep.physik.uni-mainz.de/~plass/gv/
 Obsoletes:	ghostview
 BuildRoot:	/tmp/%{name}-%{version}-root
 
-%define		_prefix	/usr/X11R6
-%define		_mandir	/usr/X11R6/man
+%define		_prefix		/usr/X11R6
+%define		_mandir		%{_prefix}/man
 
 %description
-gv allows to view and navigate through PostScript and PDF documents on an X
-display by providing a user interface for the ghostscript interpreter.  gv
-is based upon an earlier program known as ghostview.
+Gv provides a user interface for the ghostscript PostScript(TM) interpreter. 
+Derived from the ghostview program, gv can display PostScript and PDF
+documents using the X Window System.
 
 %description -l de
 gv ermöglicht das Einsehen und Navigieren von PostScript- und PDF-
@@ -38,8 +38,7 @@ est basé sur un ancien programme appelé ghostview.
 %description -l pl
 gv umo¿liwia ogl±danie i manipulacjê plikami postscriptowymi i dokumentami w
 formacie PDF pod X Window. Udostêpnia graficzny interfejs u¿ytkownika do
-programu ghostscript bêd±cego jednym z interpreterów jezyka postscript.
-Wywodzi sie od programu ghostview.
+programu ghostscript bêd±cego interpreterem jezyka postscript.
 
 %description -l tr
 gv, PostScript ve PDF dosyalarýný bir X ekraný üzerinde gösterebilen ve
