@@ -55,14 +55,14 @@ bilinen programdan yola çýkýlarak hazýrlanmýþtýr.
 
 %build
 xmkmf
-make Makefiles
-make CDEBUGFLAGS="$RPM_OPT_FLAGS"
+%{__make} Makefiles
+%{__make} CDEBUGFLAGS="$RPM_OPT_FLAGS"
 
 %install
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT%{_applnkdir}/Graphics/Viewers
 
-make install install.man DESTDIR=$RPM_BUILD_ROOT
+%{__make} install install.man DESTDIR=$RPM_BUILD_ROOT
 ln -sf gv $RPM_BUILD_ROOT%{_bindir}/ghostview
 
 mv -f $RPM_BUILD_ROOT/%{_libdir}/X11/gv/gv_class.ad $RPM_BUILD_ROOT%{_libdir}/X11/app-defaults/GV
