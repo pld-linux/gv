@@ -87,6 +87,6 @@ rm -rf $RPM_BUILD_ROOT
 %doc doc/*.html {README,CHANGES,doc/*doc,doc/*txt}.gz
 %attr(755,root,root) %{_bindir}/*
 %{_applnkdir}/Graphics/Viewers/gv.desktop
-%{_datadir}/pixmaps/*
+%{_pixmapsdir}/*
 %{_libdir}/X11/app-defaults/GV
 %{_mandir}/man1/gv.1x*
