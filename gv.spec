@@ -69,7 +69,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755, root, root) /usr/X11R6/bin/*
 /usr/X11R6/lib/X11/gv
 %config /usr/X11R6/lib/X11/app-defaults/GV
-%attr(644, root,  man) /usr/X11R6/man/man1/gv.1x
+/usr/X11R6/man/man1/gv.1x
 /etc/X11/wmconfig/gv
 
 %changelog
