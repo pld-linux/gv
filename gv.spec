@@ -25,7 +25,7 @@ Requires:	ghostscript
 Obsoletes:	ghostview
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
-%define		addir	/usr/X11R6/lib/X11/app-defaults
+%define		_appdefsdir	/usr/X11R6/lib/X11/app-defaults
 
 %description
 gv provides a user interface for the ghostscript PostScript(TM)
@@ -94,7 +94,7 @@ rm -rf $RPM_BUILD_ROOT
 %doc doc/*.html README CHANGES doc/*doc doc/*txt
 %attr(755,root,root) %{_bindir}/*
 %{_libdir}/gv
-%{addir}/GV
+%{_appdefsdir}/GV
 %{_applnkdir}/Graphics/Viewers/gv.desktop
 %{_pixmapsdir}/*
 %{_mandir}/man1/gv.1x*
