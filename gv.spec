@@ -15,6 +15,7 @@ Source2:	%{name}.png
 Patch0:		%{name}-buffer.patch
 Patch1:		%{name}-quote.patch
 Patch2:		%{name}-wheel.patch
+Patch3:		%{name}-info.patch
 URL:		http://wwwthep.physik.uni-mainz.de/~plass/gv/
 BuildRequires:	XFree86-devel
 BuildRequires:	Xaw3d-devel >= 1.5E
@@ -57,6 +58,7 @@ Ghostview adýyla bilinen programdan yola çýkýlarak hazýrlanmýþtýr.
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
+%patch3 -p1
 
 %build
 %{__aclocal}
@@ -92,4 +94,4 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/gv
 %{_desktopdir}/gv.desktop
 %{_pixmapsdir}/*
-%{_infodir}/gv.*
+%{_infodir}/gv.info*
