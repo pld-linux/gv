@@ -1,5 +1,5 @@
---- gv-3.5.8/source/ps.c.foo	2002-09-13 15:00:15.000000000 -0400
-+++ gv-3.5.8/source/ps.c	2002-09-24 18:32:03.000000000 -0400
+--- gv-3.6.0/src/ps.c.foo	2002-09-13 15:00:15.000000000 -0400
++++ gv-3.6.0/src/ps.c	2002-09-24 18:32:03.000000000 -0400
 @@ -483,7 +483,7 @@
        doc = (struct document *) PS_malloc(sizeof(struct document));
        CHECK_MALLOCED(doc);
@@ -125,8 +125,8 @@
         if (strcmp(text, "(atend)") == 0) {
            fputs(comment, dest_file);
            pages_atend = True;
---- gv-3.5.8/source/file.c.foo	2002-09-24 17:01:07.000000000 -0400
-+++ gv-3.5.8/source/file.c	2002-09-24 18:29:44.000000000 -0400
+--- gv-3.6.0/src/file.c.foo	2002-09-24 17:01:07.000000000 -0400
++++ gv-3.6.0/src/file.c	2002-09-24 18:29:44.000000000 -0400
 @@ -208,21 +208,13 @@
        if (strlen(tmpExt)>11) tmpExt[11] = '\0';     /* allow .ps_page_nnn */
        if (strlen(tmpName)+strlen(tmpExt)>23) tmpName[23-strlen(tmpExt)] = '\0';
