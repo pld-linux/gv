@@ -5,7 +5,7 @@ Summary(pl):	Zaawansowana nak³adka na ghostscript'a (interpreter PostScriptu(TM)
 Summary(tr):	Ghostscript için grafik arayüz
 Name:		gv
 Version:	3.5.8
-Release:	17
+Release:	18
 License:	GPL
 Group:		X11/Applications/Graphics
 Source0:	ftp://ftpthep.physik.uni-mainz.de/pub/gv/unix/%{name}-%{version}.tar.gz
@@ -79,14 +79,13 @@ install %{SOURCE1} $RPM_BUILD_ROOT%{_applnkdir}/Graphics/Viewers
 install %{SOURCE2} $RPM_BUILD_ROOT%{_datadir}/pixmaps
 
 gunzip doc/*gz
-gzip -9nf README CHANGES doc/*doc doc/*txt
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc doc/*.html {README,CHANGES,doc/*doc,doc/*txt}.gz
+%doc doc/*.html README CHANGES doc/*doc doc/*txt
 %attr(755,root,root) %{_bindir}/*
 %{_applnkdir}/Graphics/Viewers/gv.desktop
 %{_pixmapsdir}/*
