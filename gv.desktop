@@ -7,4 +7,5 @@ Exec=gv
 Terminal=0
 Categories=Graphics;Viewer
 Type=Application
+Encoding=UTF-8
 # vi: encoding=utf-8
