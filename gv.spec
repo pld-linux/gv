@@ -1,20 +1,25 @@
-Summary:     Enhanced frontend for ghostscript
-Summary(de): Verbessertes Frontend für Ghostscript 
-Summary(fr): Frontal amélioré pour ghostscript
-Summary(pl): Zaawansowana nak³adka na ghostscript'a
-Summary(tr): Ghostscript için grafik arayüz
-Name:        gv
-Version:     3.5.8
-Release:     6
-Copyright:   GPL
-Group:       X11/Applications/Graphics
-Requires:    ghostscript
-Source0:     ftp://thep.physik.uni-mainz.de/pub/gv/unix/%{name}-%{version}.tar.gz
-Source1:     gv.wmconfig
-Patch0:      gv-3.5.8-config.patch
-URL:         http://wwwthep.physik.uni-mainz.de/~plass/gv/
-Obsoletes:   ghostview
+Summary:	Enhanced frontend for ghostscript
+Summary(de):	Verbessertes Frontend für Ghostscript 
+Summary(fr):	Frontal amélioré pour ghostscript
+Summary(pl):	Zaawansowana nak³adka na ghostscript'a
+Summary(tr):	Ghostscript için grafik arayüz
+Name:		gv
+Version:	3.5.8
+Release:	7
+Copyright:	GPL
+Group:		X11/Applications/Graphics
+Requires:	ghostscript
+Source0:	ftp://thep.physik.uni-mainz.de/pub/gv/unix/%{name}-%{version}.tar.gz
+Source1:	gv.wmconfig
+Source2:	gv.desktop
+Patch0:		gv-config.patch
+Patch1:		gv-alias.patch
+URL:		http://wwwthep.physik.uni-mainz.de/~plass/gv/
+Obsoletes:	ghostview
 BuildRoot:	/tmp/%{name}-%{version}-root
+
+%define		_prefix	/usr/X11R6
+%define		_mandir	/usr/X11R6/man
 
 %description
 gv allows to view and navigate through PostScript and PDF documents on an X
@@ -44,7 +49,8 @@ bilinen programdan yola çýkýlarak hazýrlanmýþtýr.
 
 %prep
 %setup -q
-%patch0 -p1 -b .config
+%patch0 -p1
+%patch1 -p1
 
 %build
 xmkmf
@@ -53,21 +59,26 @@ make CDEBUGFLAGS="$RPM_OPT_FLAGS"
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT/etc/X11/wmconfig
+install -d $RPM_BUILD_ROOT/etc/X11/{wmconfig,applnk/Applications}
 
 make install install.man DESTDIR=$RPM_BUILD_ROOT
 gunzip doc/*gz
 install %{SOURCE1} $RPM_BUILD_ROOT/etc/X11/wmconfig/gv
-ln -sf gv $RPM_BUILD_ROOT/usr/X11R6/bin/ghostview
+install %{SOURCE2} $RPM_BUILD_ROOT/etc/X11/applnk/Applications
+ln -sf gv $RPM_BUILD_ROOT%{_bindir}/ghostview
+
+gzip -9nf README CHANGES doc/*doc doc/*txt \
+	$RPM_BUILD_ROOT%{_mandir}/man1/*
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc README CHANGES doc/*.html doc/*doc doc/*txt
-%attr(755,root,root) /usr/X11R6/bin/*
-/usr/X11R6/lib/X11/gv
-%config /usr/X11R6/lib/X11/app-defaults/GV
-/usr/X11R6/man/man1/gv.1x
+%doc doc/*.html {README,CHANGES,doc/*doc,doc/*txt}.gz
+%attr(755,root,root) %{_bindir}/*
+%{_libdir}/X11/gv
+%config %{_libdir}/X11/app-defaults/GV
+%{_mandir}/man1/gv.1x.gz
 /etc/X11/wmconfig/gv
+/etc/X11/applnk/Applications/gv.desktop
