@@ -9,6 +9,7 @@ Release:	21
 License:	GPL
 Group:		X11/Applications/Graphics
 Source0:	ftp://ftpthep.physik.uni-mainz.de/pub/gv/unix/%{name}-%{version}.tar.gz
+# Source0-md5:	8f2f0bd97395d6cea52926ddee736da8
 Source1:	%{name}.desktop
 Source2:	%{name}.png
 Patch0:		%{name}-config.patch
