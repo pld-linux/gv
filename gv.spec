@@ -71,39 +71,3 @@ rm -rf $RPM_BUILD_ROOT
 %config /usr/X11R6/lib/X11/app-defaults/GV
 /usr/X11R6/man/man1/gv.1x
 /etc/X11/wmconfig/gv
-
-%changelog
-* Sun Nov  1 1998 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
-  [3.5.8-6]
-- added %clean section.
-
-* Wed Aug 26 1998 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
-  [3.5.8-5]
-- added -q %setup parameter,
-- changed Buildroot to /tmp/%%{name}-%%{version}-root,
-- added using %%{name} and %%{version} in Source,
-- spec rewrited for using Buildroot,
-- added using $RPM_OPT_FLAGS during compile,
-- removed COPYING from %doc (copyright statment is in Copyright field),
-- added %config macro for gv X resources,
-- added pl translation,
-- added %attr and %defattr macros in %files (allows build package from
-  non-root account).
-
-* Fri May 08 1998 Prospector System <bugs@redhat.com>
-- translations modified for de, fr, tr
-
-* Fri Apr 10 1998 Cristian Gafton <gafton@redhat.com>
-- Manhattan build
-
-* Thu Nov 06 1997 Cristian Gafton <gafton@redhat.com>
-- we are installin a symlink to ghostview
-
-* Wed Oct 21 1997 Cristian Gafton <gafton@redhat.com>
-- updated to 3.5.8
-
-* Thu Jul 17 1997 Erik Troan <ewt@redhat.com>
-- built against glibc
-
-* Tue Apr 15 1997 Erik Troan <ewt@redhat.com>
-- added ghostscript requirement, added errlist patch for glibc.
