@@ -16,7 +16,7 @@ Patch0:		gv-config.patch
 Patch1:		gv-alias.patch
 Requires:	ghostscript
 Obsoletes:	ghostview
-BuildRoot:	/tmp/%{name}-%{version}-root
+BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_prefix		/usr/X11R6
 %define		_mandir		%{_prefix}/man
