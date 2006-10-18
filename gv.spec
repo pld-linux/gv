@@ -4,12 +4,12 @@ Summary(fr):	Frontal amélioré pour ghostscript
 Summary(pl):	Zaawansowana nak³adka na ghostscripta (interpreter PostScriptu(TM))
 Summary(tr):	Ghostscript için grafik arayüz
 Name:		gv
-Version:	3.6.1
+Version:	3.6.2
 Release:	0.1
 License:	GPL
 Group:		X11/Applications/Graphics
 Source0:	ftp://ftp.gnu.org/gnu/gv/%{name}-%{version}.tar.gz
-# Source0-md5:	ace080d647b70f46fca7946e9543b79e
+# Source0-md5:	dcdb2205cf0c61394419e015c7548df1
 Source1:	%{name}.desktop
 Source2:	%{name}.png
 Patch0:		%{name}-buffer.patch
