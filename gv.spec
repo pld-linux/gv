@@ -1,8 +1,8 @@
 Summary:	An enhanced front-end for the ghostscript PostScript(TM) interpreter
-Summary(de.UTF-8):   Verbessertes Frontend für Ghostscript
-Summary(fr.UTF-8):   Frontal amélioré pour ghostscript
-Summary(pl.UTF-8):   Zaawansowana nakładka na ghostscripta (interpreter PostScriptu(TM))
-Summary(tr.UTF-8):   Ghostscript için grafik arayüz
+Summary(de.UTF-8):	Verbessertes Frontend für Ghostscript
+Summary(fr.UTF-8):	Frontal amélioré pour ghostscript
+Summary(pl.UTF-8):	Zaawansowana nakładka na ghostscripta (interpreter PostScriptu(TM))
+Summary(tr.UTF-8):	Ghostscript için grafik arayüz
 Name:		gv
 Version:	3.6.2
 Release:	1
