@@ -21,7 +21,6 @@ BuildRequires:	Xaw3d-devel >= 1.5E
 BuildRequires:	autoconf >= 2.59-9
 BuildRequires:	automake
 BuildRequires:	texinfo
-BuildRequires:	xorg-lib-libXmu-devel
 Requires:	ghostscript
 Obsoletes:	ghostview
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
