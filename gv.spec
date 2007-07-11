@@ -6,7 +6,7 @@ Summary(tr.UTF-8):	Ghostscript için grafik arayüz
 Name:		gv
 Version:	3.6.3
 Release:	1
-License:	GPL
+License:	GPL v2+
 Group:		X11/Applications/Graphics
 Source0:	ftp://ftp.gnu.org/gnu/gv/%{name}-%{version}.tar.gz
 # Source0-md5:	0947fdbccaba114ac24da339dbf7d01a
