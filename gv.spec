@@ -8,7 +8,7 @@ Version:	3.6.3
 Release:	2
 License:	GPL v2+
 Group:		X11/Applications/Graphics
-Source0:	ftp://ftp.gnu.org/gnu/gv/%{name}-%{version}.tar.gz
+Source0:	http://ftp.gnu.org/gnu/gv/%{name}-%{version}.tar.gz
 # Source0-md5:	0947fdbccaba114ac24da339dbf7d01a
 Source1:	%{name}.desktop
 Source2:	%{name}.png
