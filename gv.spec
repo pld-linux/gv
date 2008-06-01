@@ -4,18 +4,17 @@ Summary(fr.UTF-8):	Frontal amélioré pour ghostscript
 Summary(pl.UTF-8):	Zaawansowana nakładka na ghostscripta (interpreter PostScriptu(TM))
 Summary(tr.UTF-8):	Ghostscript için grafik arayüz
 Name:		gv
-Version:	3.6.3
+Version:	3.6.4
 Release:	2
 License:	GPL v2+
 Group:		X11/Applications/Graphics
 Source0:	http://ftp.gnu.org/gnu/gv/%{name}-%{version}.tar.gz
-# Source0-md5:	0947fdbccaba114ac24da339dbf7d01a
+# Source0-md5:	34ea686ea499c938e152ab424859b903
 Source1:	%{name}.desktop
 Source2:	%{name}.png
 Patch0:		%{name}-buffer.patch
 Patch1:		%{name}-quote.patch
 Patch2:		%{name}-wheel.patch
-Patch3:		%{name}-info.patch
 URL:		http://www.gnu.org/software/gv/ 
 BuildRequires:	Xaw3d-devel >= 1.5E
 BuildRequires:	autoconf >= 2.59-9
@@ -58,7 +57,6 @@ Ghostview adıyla bilinen programdan yola çıkılarak hazırlanmıştır.
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
-%patch3 -p1
 
 %build
 %{__aclocal} -I m4
