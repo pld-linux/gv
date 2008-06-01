@@ -1,27 +1,26 @@
 Summary:	An enhanced front-end for the ghostscript PostScript(TM) interpreter
-Summary(de):	Verbessertes Frontend für Ghostscript
-Summary(fr):	Frontal amélioré pour ghostscript
-Summary(pl):	Zaawansowana nak³adka na ghostscripta (interpreter PostScriptu(TM))
-Summary(tr):	Ghostscript için grafik arayüz
+Summary(de.UTF-8):	Verbessertes Frontend fÃ¼r Ghostscript
+Summary(fr.UTF-8):	Frontal amÃ©liorÃ© pour ghostscript
+Summary(pl.UTF-8):	Zaawansowana nakÅ‚adka na ghostscripta (interpreter PostScriptu(TM))
+Summary(tr.UTF-8):	Ghostscript iÃ§in grafik arayÃ¼z
 Name:		gv
-Version:	3.6.1
-Release:	0.1
-License:	GPL
+Version:	3.6.4
+Release:	2
+License:	GPL v2+
 Group:		X11/Applications/Graphics
-Source0:	ftp://ftp.gnu.org/gnu/gv/%{name}-%{version}.tar.gz
-# Source0-md5:	ace080d647b70f46fca7946e9543b79e
+Source0:	http://ftp.gnu.org/gnu/gv/%{name}-%{version}.tar.gz
+# Source0-md5:	34ea686ea499c938e152ab424859b903
 Source1:	%{name}.desktop
 Source2:	%{name}.png
 Patch0:		%{name}-buffer.patch
 Patch1:		%{name}-quote.patch
 Patch2:		%{name}-wheel.patch
-Patch3:		%{name}-info.patch
-URL:		http://wwwthep.physik.uni-mainz.de/~plass/gv/
-BuildRequires:	XFree86-devel
+URL:		http://www.gnu.org/software/gv/ 
 BuildRequires:	Xaw3d-devel >= 1.5E
-BuildRequires:	autoconf
+BuildRequires:	autoconf >= 2.59-9
 BuildRequires:	automake
 BuildRequires:	texinfo
+BuildRequires:	xorg-lib-libXmu-devel
 Requires:	ghostscript
 Obsoletes:	ghostview
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -31,38 +30,38 @@ gv provides a user interface for the ghostscript PostScript(TM)
 interpreter. Derived from the ghostview program, gv can display
 PostScript and PDF documents using the X Window System.
 
-%description -l de
-gv ermöglicht das Einsehen und Navigieren von PostScript- und PDF-
-Dokumenten unter X, indem es eine Benutzeroberfläche für den
-Ghostscript- Interpreter bereitstellt. gv basiert auf dem älteren
+%description -l de.UTF-8
+gv ermÃ¶glicht das Einsehen und Navigieren von PostScript- und PDF-
+Dokumenten unter X, indem es eine BenutzeroberflÃ¤che fÃ¼r den
+Ghostscript- Interpreter bereitstellt. gv basiert auf dem Ã¤lteren
 Programm ghostview.
 
-%description -l fr
+%description -l fr.UTF-8
 gv permet de visualiser et de naviguer dans les documents PostScript
-et PDF sur un écran X en offrant une interface pour l'interpréteur
-ghostscript. gv est basé sur un ancien programme appelé ghostview.
+et PDF sur un Ã©cran X en offrant une interface pour l'interprÃ©teur
+ghostscript. gv est basÃ© sur un ancien programme appelÃ© ghostview.
 
-%description -l pl
-gv umo¿liwia ogl±danie i manipulacjê plikami postscriptowymi i
-dokumentami w formacie PDF pod X Window. Udostêpnia graficzny
-interfejs u¿ytkownika do programu ghostscript bêd±cego interpreterem
-jêzyka postscript.
+%description -l pl.UTF-8
+gv umoÅ¼liwia oglÄ…danie i manipulacjÄ™ plikami postscriptowymi i
+dokumentami w formacie PDF pod X Window. UdostÄ™pnia graficzny
+interfejs uÅ¼ytkownika do programu ghostscript bÄ™dÄ…cego interpreterem
+jÄ™zyka postscript.
 
-%description -l tr
-gv, PostScript ve PDF dosyalarýný bir X ekraný üzerinde gösterebilen
-ve üzerlerinde dolaþmayý saðlayan bir ghostscript arayüzüdür.
-Ghostview adýyla bilinen programdan yola çýkýlarak hazýrlanmýþtýr.
+%description -l tr.UTF-8
+gv, PostScript ve PDF dosyalarÄ±nÄ± bir X ekranÄ± Ã¼zerinde gÃ¶sterebilen
+ve Ã¼zerlerinde dolaÅŸmayÄ± saÄŸlayan bir ghostscript arayÃ¼zÃ¼dÃ¼r.
+Ghostview adÄ±yla bilinen programdan yola Ã§Ä±kÄ±larak hazÄ±rlanmÄ±ÅŸtÄ±r.
 
 %prep
 %setup -q
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
-%patch3 -p1
 
 %build
-%{__aclocal}
+%{__aclocal} -I m4
 %{__autoconf}
+%{__autoheader}
 %{__automake}
 %configure
 %{__make}
@@ -77,19 +76,20 @@ ln -sf gv $RPM_BUILD_ROOT%{_bindir}/ghostview
 
 install %{SOURCE1} $RPM_BUILD_ROOT%{_desktopdir}
 install %{SOURCE2} $RPM_BUILD_ROOT%{_pixmapsdir}
+rm -f $RPM_BUILD_ROOT%{_infodir}/dir
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
-%post
-[ ! -x /usr/sbin/fix-info-dir ] || /usr/sbin/fix-info-dir -c %{_infodir} >/dev/null 2>&1
+%post	-p	/sbin/postshell
+-/usr/sbin/fix-info-dir -c %{_infodir}
 
-%postun
-[ ! -x /usr/sbin/fix-info-dir ] || /usr/sbin/fix-info-dir -c %{_infodir} >/dev/null 2>&1
+%postun	-p	/sbin/postshell
+-/usr/sbin/fix-info-dir -c %{_infodir}
 
 %files
 %defattr(644,root,root,755)
-%doc README NEWS
+%doc AUTHORS ChangeLog NEWS README
 %attr(755,root,root) %{_bindir}/*
 %{_libdir}/gv
 %{_desktopdir}/gv.desktop
