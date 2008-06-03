@@ -15,6 +15,7 @@ Source2:	%{name}.png
 Patch0:		%{name}-buffer.patch
 Patch1:		%{name}-quote.patch
 Patch2:		%{name}-wheel.patch
+Patch3:		%{name}-info.patch
 URL:		http://www.gnu.org/software/gv/ 
 BuildRequires:	Xaw3d-devel >= 1.5E
 BuildRequires:	autoconf >= 2.59-9
@@ -57,6 +58,7 @@ Ghostview adıyla bilinen programdan yola çıkılarak hazırlanmıştır.
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
+%patch3 -p1
 
 %build
 %{__aclocal} -I m4
@@ -81,18 +83,19 @@ rm -f $RPM_BUILD_ROOT%{_infodir}/dir
 %clean
 rm -rf $RPM_BUILD_ROOT
 
-%post	-p	/sbin/postshell
+%post	-p /sbin/postshell
 -/usr/sbin/fix-info-dir -c %{_infodir}
 
-%postun	-p	/sbin/postshell
+%postun	-p /sbin/postshell
 -/usr/sbin/fix-info-dir -c %{_infodir}
 
 %files
 %defattr(644,root,root,755)
 %doc AUTHORS ChangeLog NEWS README
-%attr(755,root,root) %{_bindir}/*
+%attr(755,root,root) %{_bindir}/ghostview
+%attr(755,root,root) %{_bindir}/gv
 %{_libdir}/gv
 %{_desktopdir}/gv.desktop
-%{_pixmapsdir}/*
+%{_pixmapsdir}/gv.png
 %{_mandir}/man1/gv.1*
 %{_infodir}/gv.info*
