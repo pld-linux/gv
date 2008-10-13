@@ -1,27 +1,34 @@
+#
+# Conditional build:
+%bcond_with	libzio	# use libzio for I/O (currently doesn't work because of unsupported seeking)
+#
 Summary:	An enhanced front-end for the ghostscript PostScript(TM) interpreter
 Summary(de.UTF-8):	Verbessertes Frontend für Ghostscript
 Summary(fr.UTF-8):	Frontal amélioré pour ghostscript
 Summary(pl.UTF-8):	Zaawansowana nakładka na ghostscripta (interpreter PostScriptu(TM))
 Summary(tr.UTF-8):	Ghostscript için grafik arayüz
 Name:		gv
-Version:	3.6.5
+Version:	3.6.6
 Release:	1
-License:	GPL v2+
+License:	GPL v3+
 Group:		X11/Applications/Graphics
 Source0:	http://ftp.gnu.org/gnu/gv/%{name}-%{version}.tar.gz
-# Source0-md5:	ce3081b1b3e6258607f2de70f39cbcd2
+# Source0-md5:	0b9c02724af876d9e5556c4e957b6343
 Source1:	%{name}.desktop
 Source2:	%{name}.png
-Patch0:		%{name}-buffer.patch
-Patch1:		%{name}-quote.patch
-Patch2:		%{name}-wheel.patch
-Patch3:		%{name}-info.patch
+Patch0:		%{name}-wheel.patch
+Patch1:		%{name}-info.patch
 URL:		http://www.gnu.org/software/gv/ 
 BuildRequires:	Xaw3d-devel >= 1.5E
 BuildRequires:	autoconf >= 2.59-9
 BuildRequires:	automake
+BuildRequires:	bzip2-devel
+%{?with_libzio:BuildRequires:	libzio-devel}
 BuildRequires:	texinfo
+BuildRequires:	xorg-lib-libXinerama-devel
 BuildRequires:	xorg-lib-libXmu-devel
+BuildRequires:	xorg-lib-libXt-devel
+BuildRequires:	zlib-devel
 Requires:	ghostscript
 Obsoletes:	ghostview
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -57,15 +64,17 @@ Ghostview adıyla bilinen programdan yola çıkılarak hazırlanmıştır.
 %setup -q
 %patch0 -p1
 %patch1 -p1
-%patch2 -p1
-%patch3 -p1
 
 %build
 %{__aclocal} -I m4
 %{__autoconf}
 %{__autoheader}
 %{__automake}
-%configure
+# libzio uses weak symbols to access libbz2 and libz, so -as-needed
+# normally kills them from linking
+%{?with_libzio:LDFLAGS="-lbz2 -lz %{rpmldflags}"}
+%configure \
+	%{!?with_libzio:ac_cv_header_zlib_h=no ac_cv_header_bzlib_h=no ac_cv_header_zio_h=no}
 %{__make}
 
 %install
@@ -94,8 +103,10 @@ rm -rf $RPM_BUILD_ROOT
 %doc AUTHORS ChangeLog NEWS README
 %attr(755,root,root) %{_bindir}/ghostview
 %attr(755,root,root) %{_bindir}/gv
-%{_libdir}/gv
+%attr(755,root,root) %{_bindir}/gv-update-userconfig
+%{_datadir}/gv
 %{_desktopdir}/gv.desktop
 %{_pixmapsdir}/gv.png
 %{_mandir}/man1/gv.1*
+%{_mandir}/man1/gv-update-userconfig.1*
 %{_infodir}/gv.info*
