@@ -9,7 +9,7 @@ Summary(pl.UTF-8):	Zaawansowana nakładka na ghostscripta (interpreter PostScrip
 Summary(tr.UTF-8):	Ghostscript için grafik arayüz
 Name:		gv
 Version:	3.7.4
-Release:	1
+Release:	2
 License:	GPL v3+
 Group:		X11/Applications/Graphics
 Source0:	http://ftp.gnu.org/gnu/gv/%{name}-%{version}.tar.gz
